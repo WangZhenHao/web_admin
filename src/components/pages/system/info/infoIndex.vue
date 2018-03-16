@@ -1,12 +1,13 @@
 <template>
 	<div>
-		我是添加节点
-		
+		<h1>我是系统概况</h1>
 	</div>
 </template>
 <style>
 	
 </style>
 <script>
-	
+	export default {
+		
+	}
 </script>
