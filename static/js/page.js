@@ -88,14 +88,19 @@
 		 * @return {[type]} [description]
 		 */
 		getUrlParams() {
-			let str = window.location.href.split('?')[1],
-				strArr = str.split('&'),
-				params = {};
-			for(let item of strArr) {
-				let itemArr = item.split('=');
-				params[itemArr[0]] = itemArr[1];
+			const url = window.location.href;
+			if(url.indexOf('?') > -1) {
+				let str = url.split('?')[1],
+					strArr = str.split('&'),
+					params = {};
+				for(let item of strArr) {
+					let itemArr = item.split('=');
+					params[itemArr[0]] = itemArr[1];
+				}
+				return params;
+			} else {
+				return '';
 			}
-			return params;
 			
 		},
 		/**
@@ -112,14 +117,15 @@
 		 * 改变url地址的函数
 		 * @return {[type]} [description]
 		 */
-		changeUrlPath() {
-			let location = '#/product/set/baseSet?';
+		changeUrlPath(params) {
+			let url = window.location.href;
+			let location = url.match(/\#[^\?]*/)[0];
 			let str = [];
-			for(let item in this.params) {
-				str.push(item + '=' +  this.params[item]);
+			for(let item in params) {
+				str.push(item + '=' +  params[item]);
 			}
-			str = location + str.join('&');
-			history.pushState(this.params,'', str);
+			str = `${location}?${str.join('&')}`;
+			history.pushState(params,'', str);
 		},
 		init() {
 			this.historyPopstate();

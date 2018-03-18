@@ -119,8 +119,6 @@ a:hover {
 }	
 </style>
 <script>
-// import leftBarSide from '../childComponents/leftBarSide';
-// import rightBarSide from '../childComponents/rightBarSide';
 import nodeListData from './testNodeData.js';
 export default {
 	data() {

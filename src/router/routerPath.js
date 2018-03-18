@@ -13,8 +13,13 @@ function _import(path) {
  * const adSlot = r => require.ensure([], () => r(require('@/components/pages/system/set/adSlot')), 'adSlot');
 
  */
-
+//404页面
+const notFoundComponent = () => import('@/components/childComponents/notFoundComponent');
 let routerPath = [
+        {
+          path: '*',
+          component: notFoundComponent
+        },
         {
           path: '/index',
           redirect: '/system/info/infoIndex' 
