@@ -26,7 +26,6 @@
 		  默认get请求
 		 */
 		get(url, data, options) {
-			this.showLoading();
 			$.ajax({
 				//url地址
 				url: url,
@@ -38,6 +37,10 @@
 				async: options.async || true,
 				//超时时间
 				timeout: options.timeout || 15000,
+				//请求之前
+				beforeSend: (requrest) => {
+					this.showLoading();
+				},
 				//成功回调				
 				success: (res) => {
 					this.closeLoading();
@@ -49,7 +52,7 @@
 					options.errorFn(res);
 				},
 				//失败或者成功的回调
-				complete: (requres, status) => {
+				complete: (requrest, status) => {
 					if(status == 'timeout') {
 						this.closeLoading();
 					}
@@ -127,11 +130,19 @@
 			str = `${location}?${str.join('&')}`;
 			history.pushState(params,'', str);
 		},
-		init() {
-			this.historyPopstate();
-		}
+		/**
+		 * 设置没有匹配到路由的信息
+		 * @return {[type]} [description]
+		 */
+		// setNotFountComponetMsg(to) {
+		// 	window.pageErrorMessage = {
+		// 		path: to.path,
+		// 		msg: `没有找到路径为${to.path}的vue文件`
+		// 	}
+		// 	console.log(window.pageErrorMessage);
+		// 	// return pageMessage;
+		// }
 	};
-	page.init();
 	window.page = page;
 
 })()

@@ -17,12 +17,13 @@ function _import(path) {
 const notFoundComponent = () => import('@/components/childComponents/notFoundComponent');
 let routerPath = [
         {
-          path: '*',
+          path: '/error',
           component: notFoundComponent
         },
         {
           path: '/index',
-          redirect: '/system/info/infoIndex' 
+          // redirect: '/system/info/infoIndex',
+          redirect: '/product/set/baseSet' 
         },
 	      {
           path: '',

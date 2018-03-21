@@ -1,15 +1,16 @@
 <template>
 	<div class="baseset">
-		<form class="form-inline">
+		<div class="form-inline">
 			<div class="form-group">
-			    <label for="商品Id">商品Id</label>
-			    <input type="text" class="form-control" v-model="params.goods_id" placeholder="请输入商品Id">
+			    <!-- <label for="商品Id">商品Id</label> -->
+			    <select class="form-control" v-model="selected">
+			    	<option v-for="item in search_type" :value="item.value">{{item.descri}}</option>
+			    </select>
+			    <input type="text" class="form-control" v-model="search_text" placeholder="请输入商品Id" @keyup.enter="doSearch">
+			    <!-- <input type="text" class="form-control" v-model="params.goods_id" placeholder="请输入商品Id"> -->
+				<button type="button" class="btn btn-primary" @click="doSearch">搜索</button>
 			</div>
-		</form>
-		<button class="btn btn-primary" @click="doSearch">搜索</button>
-
-		<h1>你要搜索的id是: {{params.goods_id}}</h1><br>
-		<input type="text" v-model="msg">
+		</div>
 	</div>
 </template>
 <style>
@@ -26,6 +27,12 @@ h1 {
 				msg: '我是基本页面数据',
 				params: {
 				},
+				search_type: [
+				   {value: 'goods_id', descri: '商品id'},
+				   {value: 'uid', descri: '用户uid'},
+				],
+				selected: 'goods_id',
+				search_text: ''
 			}
 		},
 		mounted() {
@@ -36,17 +43,17 @@ h1 {
 			init() {
 			    // 获取url上面的参数,用于用户刷新
 			    this.getUrlParams();
-
 				//获取数据列表
 				this.getListInit();
-
 				this.clickHistoryBack();
 			},
 
 			doSearch() {
-				if(this.params.goods_id == '') {
-					this.params = {};
+				this.params = {};
+				if(this.search_text) {
+				   this.$set(this.params, this.selected, this.search_text);
 				}
+				console.log(this.params);
 				this.getListInit();
 			},
 			//获取数据列表
@@ -54,7 +61,7 @@ h1 {
 				console.log('我去请求数据了,请求参数为:' + JSON.stringify(this.params));
 			},
 
-			//获取数据列表初始化
+			//数据列表初始化
 			getListInit(type) {
 				if(type != 'noHistoryChange') {
 					this.changeUrlPath();
@@ -64,7 +71,7 @@ h1 {
 			getUrlParams() {
 				let urlParams = page.getUrlParams();
 				if(urlParams) {
-					return this.params = urlParams;
+					this.params = urlParams;
 				}
 			},
 			changeUrlPath() {
@@ -76,6 +83,7 @@ h1 {
 			clickHistoryBack() {
 				page.historyPopstate((res) => {
 					this.params = res;
+					this.search_text = this.params[Object.keys(this.params)[0]];
 					this.getListInit('noHistoryChange');
 				})
 			}
