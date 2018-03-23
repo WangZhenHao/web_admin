@@ -133,10 +133,22 @@ export default {
 	mounted() {
 
 		this.nodeList = this.toMakeTree(this.nodeListData);
-		this.changeNodeList(this.nodeList[0], 0);
+		this.nodeInit();
 		this.showOrHideNodeList();
 	},
 	methods: {
+		//初始化节点的位置
+		nodeInit() {
+			let url = window.location.href,
+				location = url.split('#')[1],
+				pageModule = location.split('/')[1];
+			for(let i = 0, len = this.nodeList.length; i < len; i++) {
+				if(this.nodeList[i].name == pageModule) {
+					this.changeNodeList(this.nodeList[i], i);
+					break;
+				}
+			}
+		},
 		//显示隐藏菜单列表
 		showOrHideNodeList() {
 			setTimeout(function() {

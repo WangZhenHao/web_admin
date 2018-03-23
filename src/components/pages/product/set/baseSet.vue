@@ -2,12 +2,10 @@
 	<div class="baseset">
 		<div class="form-inline">
 			<div class="form-group">
-			    <!-- <label for="商品Id">商品Id</label> -->
 			    <select class="form-control" v-model="selected">
 			    	<option v-for="item in search_type" :value="item.value">{{item.descri}}</option>
 			    </select>
 			    <input type="text" class="form-control" v-model="search_text" placeholder="请输入商品Id" @keyup.enter="doSearch">
-			    <!-- <input type="text" class="form-control" v-model="params.goods_id" placeholder="请输入商品Id"> -->
 				<button type="button" class="btn btn-primary" @click="doSearch">搜索</button>
 			</div>
 		</div>
