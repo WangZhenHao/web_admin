@@ -1,35 +1,27 @@
-<<<<<<< HEAD
 # web_admin
 后台管理网站
-=======
-# xsh_admin_pc_test
+**本项目可用于企业后台管理,可以自由开发各种vue组件,满足大多数的业务需求,代码简洁,可维护性高,引入了boostrap框架,使得页面很精美;项目处于测试阶段,系统可能存在bug,不稳定
 
-> A Vue.js project
-
+[在线预览: http://admin.wzhshare.top](http://admin.wzhshare.top)  
+###技术栈
+```
+Vue2 + vue-router + vuex + boostrap + jquery + ES6
+```
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开启服务用于本地开发 localhost:8085
 npm run dev
 
-# build for production with minification
+# 打包发布
 npm run build
 
 # build for production and view the bundle analyzer report
 npm run build --report
 
-# run unit tests
+# 单元测试
 npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
->>>>>>> dev
