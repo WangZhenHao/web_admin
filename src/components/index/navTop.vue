@@ -3,7 +3,7 @@
 		<nav data-spy="affix" data-offset="0" class="navbar navbar-default" role="navigation">
 		    <div class="container-fluid">
 			    <div class="navbar-header pull-left">
-			        <a class="navbar-brand font-b">小生活管理后台</a>
+			        <a class="navbar-brand font-b">管理后台</a>
 			    </div>
 			    <div class="pull-right navbar-options">
 			        <ul class="nav navbar-nav">
