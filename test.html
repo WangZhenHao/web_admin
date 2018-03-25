@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/**
+		 * 获取文件路径
+		 * @return {[type]} [description]
+		 * 获取: #/product/set/baseSet
+		 */
+		function getUrlPath() {
+			var str1 = 'http://localhost:8085/#/product/set/baseSet?page=10&limit=10&goods_id=1';
+			var str2 = 'http://localhost:8085/#/product/set/baseSet';
+
+			// var re = /(\#.*)\?{0,1}/;
+			var re = /\#[^\?]*/;
+
+			var arr = str1.match(re);
+			console.log('获取文件路径: ', arr);
+
+		}
+		getUrlPath();
+		/**
+		 * 判断一个空对象的boolean值
+		 * @return {Boolean} [description]
+		 */
+		function isValueObject() {
+			var json = {'name': 'wzh'};
+			console.log('判断一个空对象的boolean值: ',Boolean(json));
+			var arr = Object.keys(json);
+			console.log('判断一个空对象是否为空 Object.keys: ', arr);
+			arr = Object.getOwnPropertyNames(json);
+			console.log('判断一个空对象是否为空 Object.getOwnPropertyNames: ', arr);
+		}
+		isValueObject();
+	</script>
+</body>
+</html>
