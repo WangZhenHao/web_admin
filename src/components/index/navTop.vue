@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<nav data-spy="affix" data-offset="0" class="navbar navbar-default" role="navigation">
+		<nav data-spy="affix" data-offset="0" class="navbar navbar-default affix" role="navigation">
 		    <div class="container-fluid">
 			    <div class="navbar-header pull-left">
 			        <a class="navbar-brand font-b">管理后台</a>

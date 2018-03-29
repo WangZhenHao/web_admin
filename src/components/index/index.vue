@@ -6,7 +6,7 @@
         <!-- 左侧栏 -->
         <leftSide></leftSide>
         <!-- 路由 -->
-        <div class="w-h affix" id="data-container">
+        <div class="w-h" id="data-container">
             <div class="p-ten data-wrap">
               <!-- <keep-alive> -->
                 <router-view></router-view>
@@ -17,9 +17,25 @@
   </div>
 </template>
 
+<style>
+.w-h {
+   width: 100%;
+   height: 100%;
+}
+#data-container {
+  float: left;
+  background: #fff;
+  /*padding-top: 52px;*/
+  padding: 52px 0 0 250px;
+  /*top: 0px;
+  left: 250px;*/
+  overflow-x: auto;
+}
+.data-wrap {
+  min-width: 920px;
+}
+</style>
 <script>
-// import leftSide from './components/leftSide';
-// import navTop from './components/navTop';
 const leftSide = () => import(/* webpackChunkName: "leftSide" */ './leftSide');
 const navTop = () => import(/* webpackChunkName: "navTop" */ './navTop');
 
@@ -30,25 +46,19 @@ export default {
      leftSide,
      navTop,
   },
+  mounted() {
+    // this.resizeWindow();
+  },
   methods: {
-    
+    resizeWindow() {
+      $(window).resize(function() {
+          var w = $(window).width();
+          $('#data-container').css({
+            'width': (w - 250) + 'px'
+          })
+      });
+      $(window).trigger('resize');
+    }
   }
 }
 </script>
-
-<style>
-.w-h {
-   width: 100%;
-   height: 100%;
-}
-#data-container {
-  background: #fff;
-  padding-top: 52px;
-  top: 0px;
-  left: 250px;
-  overflow-x: auto;
-}
-.data-wrap {
-  min-width: 920px;
-}
-</style>

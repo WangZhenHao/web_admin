@@ -65,6 +65,7 @@
 	top: 52px;
 	left: 0;
 	background: #F5F5F5;
+	z-index: 2;
 }
 .left-bar-side {
 	width: 30%;
