@@ -25,14 +25,11 @@
 #data-container {
   float: left;
   background: #fff;
-  /*padding-top: 52px;*/
   padding: 52px 0 0 250px;
-  /*top: 0px;
-  left: 250px;*/
   overflow-x: auto;
 }
 .data-wrap {
-  min-width: 920px;
+  overflow: hidden;
 }
 </style>
 <script>
@@ -47,7 +44,7 @@ export default {
      navTop,
   },
   mounted() {
-    // this.resizeWindow();
+    
   },
   methods: {
     resizeWindow() {

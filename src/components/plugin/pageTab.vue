@@ -1,14 +1,14 @@
 <template>
 	<div>
-		<nav v-if="pageData['total']" aria-label="Page navigation">
+		<nav v-if="pageData['totalCount']" aria-label="Page navigation">
 		  <ul class="pagination">
 		    <li>
 		      <a>
-		        <span aria-hidden="true">总{{pageData['total']}}条/共{{pageData['pages']}}页</span>
+		        <span aria-hidden="true">总{{pageData['totalCount']}}条/共{{pageData['totalPage']}}页</span>
 		      </a>
 		    </li>
 		    <li>
-		    	<a>
+		    	<a style="height: 34px;">
 		    		<select @change="chageLimit" v-model="pageData['limit']">
 		    			<option v-for="value in pagelimit" :value="value">{{value}}</option>
 		    		</select>
@@ -20,17 +20,17 @@
 		      </a>
 		    </li>
 		    <li>
-		      <a aria-label="Previous" @click="previous">
+		      <a :class="{'not-allow': pageData['currentPage'] == 1}" aria-label="Previous" @click="previous">
 		        <span aria-hidden="true">上一页</span>
 		      </a>
 		    </li>
 		    <li>
 		    	<a>
-		    		<span>当前{{pageData['current']}}/{{pageData['pages']}}</span>
+		    		<span>当前{{pageData['currentPage']}}/{{pageData['totalPage']}}</span>
 		    	</a>
 		    </li>
 		    <li>
-		      <a aria-label="Next" @click="next">
+		      <a :class="{'not-allow': pageData['currentPage'] == pageData['totalPage']}" aria-label="Next" @click="next">
 		        <span aria-hidden="true">下一页</span>
 		      </a>
 		    </li>
@@ -59,13 +59,16 @@
 	</div>
 </template>
 <style>
-	.pagination >li > a {
+	.pagination > li > a {
 		cursor: pointer;
 		color: #666;
 	}
 	.page-tab-go {
 		width: 40px;
 		height: 20px;
+	}
+	.pagination >li > a.not-allow {
+		cursor:not-allowed
 	}
 </style>
 <script>
@@ -74,10 +77,10 @@
 	 * 
 	 * <pagaTab :page-data="分页数据" @pageTabEvent="事件名"></pagaTab>
 	 * pageData: {
-	 * 	current: 1, //当前页
-		pages: 2,   //总页数
+	 * 	currentPage: 1, //当前页
+		totalPage: 2,   //总页数
 		limit: 20,  //分页大小
-		total: 24	//总记录数
+		totalCount: 24	//总记录数
 	 * }
 	 */
 	export default {
@@ -92,35 +95,36 @@
 		},
 		methods: {
 			first() {
-				this.pageData['current'] = 1;
+				this.pageData['currentPage'] = 1;
 				this.pageChangeCallBack();
 			},
 			last() {
-				this.pageData['current'] = this.pageData['pages'];
+				this.pageData['currentPage'] = this.pageData['totalPage'];
 				this.pageChangeCallBack();
 			},
 			previous() {
-				this.pageData['current']--;
-				if(this.pageData['current'] <= 0) {
-					this.pageData['current'] = 1;
+				this.pageData['currentPage']--;
+				if(this.pageData['currentPage'] <= 0) {
+					this.pageData['currentPage'] = 1;
 					return;
 				}
 				this.pageChangeCallBack();
 			},
 			next() {
-				this.pageData['current']++;
-				if(this.pageData['current'] > this.pageData['pages']) {
-					this.pageData['current'] = this.pageData['pages'];
+				this.pageData['currentPage']++;
+				if(this.pageData['currentPage'] > this.pageData['totalPage']) {
+					this.pageData['currentPage'] = this.pageData['totalPage'];
 					return;
 				}
 				this.pageChangeCallBack()
 			},
 			goTo() {
-				if(this.goToPage > this.pageData['pages']) {
-					alert('页数不存在');
+				console.log(isNaN(this.goToPage));
+				if(this.goToPage > this.pageData['totalPage'] || this.goToPage <= 0 || isNaN(this.goToPage)) {
+					webapp.error('输入的页数不存在');
 					return;
 				}
-				this.pageData['current'] = this.goToPage;
+				this.pageData['currentPage'] = this.goToPage;
 				this.pageChangeCallBack();
 			},
 			chageLimit() {

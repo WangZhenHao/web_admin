@@ -6,7 +6,7 @@
 			        <a class="navbar-brand font-b">管理后台</a>
 			    </div>
 			    <div class="pull-right navbar-options">
-			        <ul class="nav navbar-nav">
+			        <ul class="nav navbar-nav cursor-pointer">
 			            <li class="dropdown">
 			                <a class="dropdown-toggle" data-toggle="dropdown">
 			                	我的

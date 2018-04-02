@@ -47,8 +47,7 @@
 			</table>
 		</div>
 		<pageTab :page-data="pageData" @pageTabEvent="pageChage"></pageTab>
-		
-		<modal title="我是组件的标题测试" :show-btn="true" ref="message" @componentClickEvent="confirm">
+		<modal title="我是组件的标题测试" :show-btn="true" ref="message" @modalClickEvent="confirm">
 			<div slot='modal-body'>
 				我是组件一
 			</div>
@@ -87,19 +86,22 @@ h1 {
 					'0': '隐藏'
 				},
 				pageData: {
-					current: 1,
-					pages: 2,
+					currentPage: 1,
+					totalPage: 2,
 					limit: 20,
-					total: 24
+					totalCount: 24
 				}
 			}
 		},
 		mounted() {
 			this.init();
+			webapp.success('登录成功')
+			
+
 		},
 		methods: {
 			pageChage(page) {
-				this.params['current'] = page['current'];
+				this.params['currentPage'] = page['currentPage'];
 				this.params['limit'] = page['limit'];
 				this.getListInit();
 			},

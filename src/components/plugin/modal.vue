@@ -22,12 +22,7 @@
 <script>
   /**
    * 模态框组件使用介绍:
-   * title:标题, 
-   * show-btn:是否显示确认按钮,
-   * ref:所指的组件 
-   * componentClickEvent:点击确认按钮触发的事件
-   * 
-   * <modal title="标题" :show-btn="是否显示确认按钮" ref="组件名" @componentClickEvent="事件名">
+     <modal title="标题" btn-confirm="按钮名称" :show-btn="是否显示确认按钮" ref="组件名" @componentClickEvent="事件名">
       <div slot='modal-body'>
         显示内容
       </div>
@@ -47,7 +42,7 @@
 		},
 		methods:{
       confirm() {
-         this.$emit('componentClickEvent')
+         this.$emit('modalClickEvent')
       },
       show() {
         $('#' + this.modalId).modal('show');
