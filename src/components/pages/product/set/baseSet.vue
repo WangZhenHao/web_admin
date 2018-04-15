@@ -47,9 +47,11 @@
 			</table>
 		</div>
 		<pageTab :page-data="pageData" @pageTabEvent="pageChage"></pageTab>
-		<modal title="我是组件的标题测试" :show-btn="true" ref="message" @modalClickEvent="confirm">
+		<modal title="标题" :show-btn="true" ref="message" @modalClickEvent="confirm">
 			<div slot='modal-body'>
-				我是组件一
+				<p class="text-center">
+					<a target="_blank" href="https://github.com/WangZhenHao/web_admin">去gitHub看看简介(https://github.com/WangZhenHao/web_admin/)</a>
+				</p>
 			</div>
 		</modal>
 	</div>
@@ -95,9 +97,9 @@ h1 {
 		},
 		mounted() {
 			this.init();
-			webapp.success('登录成功')
-			
-
+			setTimeout(function() {
+				this.showModal();	
+			}.bind(this), 1000);
 		},
 		methods: {
 			pageChage(page) {
@@ -106,6 +108,7 @@ h1 {
 				this.getListInit();
 			},
 			confirm() {
+				window.open('https://github.com/WangZhenHao/web_admin/')
 				this.$refs.message.hide();
 			},
 			showModal() {
