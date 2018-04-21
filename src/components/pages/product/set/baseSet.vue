@@ -92,14 +92,18 @@ h1 {
 					totalPage: 2,
 					limit: 20,
 					totalCount: 24
-				}
+				},
+				showModalBoolean: true
 			}
 		},
 		mounted() {
 			this.init();
-			// setTimeout(function() {
-			// 	this.showModal();	
-			// }.bind(this), 1000);
+			setTimeout(function() {
+				if(this.showModalBoolean) {
+					this.showModal();
+					this.showModalBoolean = false;	
+				}
+			}.bind(this), 1000);
 		},
 		methods: {
 			pageChage(page) {

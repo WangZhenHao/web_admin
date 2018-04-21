@@ -19,7 +19,7 @@ let routerPath = [
         {
           path: '/index',
           // redirect: '/system/info/infoIndex',
-          redirect: '/system/info/infoIndex' 
+          redirect: '/product/set/baseSet' 
         },
         {
           path: '/system/info/infoIndex',
