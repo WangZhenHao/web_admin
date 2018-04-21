@@ -17,42 +17,56 @@ function _import(path) {
 const notFoundComponent = () => import('@/components/childComponents/notFoundComponent');
 let routerPath = [
         {
-          path: '/error',
-          component: notFoundComponent
-        },
-        {
           path: '/index',
           // redirect: '/system/info/infoIndex',
-          redirect: '/product/set/baseSet' 
+          redirect: '/system/info/infoIndex' 
         },
-	      {
-          path: '',
+        {
+          path: '/system/info/infoIndex',
           // component: baseSet
-          component: _import('/system/info/infoIndex')
+          component: _import('/system/info/infoIndex'),
+          meta: {
+            title: '系统信息',
+          }
+        },
+        {
+          path: '/error',
+          component: notFoundComponent,
+          meta: {
+            title: '错误',
+          }
         },
         {
           path: '/product/set/baseSet',
           // component: baseSet
-          component: _import('/product/set/baseSet')
+          component: _import('/product/set/baseSet'),
+          meta: {
+            title: '基本设置',
+          }
         },
         {
           path: '/product/set/adSlot',
           // component: adSlot,
-          component: _import('/product/set/adSlot')
+          component: _import('/product/set/adSlot'),
+          meta: {
+            title: '广告位',
+          }
         },
         {
           path: '/product/set/productClassify',
           // component: productClassify,
-          component: _import('/product/set/productClassify')
+          component: _import('/product/set/productClassify'),
+          meta: {
+            title: '产品分类',
+          }
         },
         {
           path: '/product/set/typeSet',
           // component: typeSet,
-          component: _import('/product/set/typeSet')
-        },
-        {
-          path: '/system/info/infoIndex',
-          component: _import('/system/info/infoIndex')
+          component: _import('/product/set/typeSet'),
+          meta: {
+            title: '类型设置',
+          }
         }
 ]
 

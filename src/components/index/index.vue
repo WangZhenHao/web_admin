@@ -5,11 +5,17 @@
         <navTop></navTop>
         <!-- 左侧栏 -->
         <leftSide></leftSide>
+        <!-- 窗口 -->
+        <window></window>
         <!-- 路由 -->
         <div class="w-h" id="data-container">
-            <div class="p-ten data-wrap">
+            <div class="p-t-ten p-r-ten p-l-ten data-wrap">
+              <div class="router-wrap bg-white p-ten">
+                <!-- <transition name="fade"> -->
+                  <router-view></router-view>
+                <!-- </transition> -->
+              </div>
               <!-- <keep-alive> -->
-                <router-view></router-view>
               <!-- </keep-alive> -->
             </div>
         </div>  
@@ -24,8 +30,8 @@
 }
 #data-container {
   float: left;
-  background: #fff;
-  padding: 52px 0 0 250px;
+  background: #f8f8f8;
+  padding: calc(52px + 40px) 0 0 250px;
   overflow-x: auto;
 }
 .data-wrap {
@@ -35,13 +41,14 @@
 <script>
 const leftSide = () => import(/* webpackChunkName: "leftSide" */ './leftSide');
 const navTop = () => import(/* webpackChunkName: "navTop" */ './navTop');
-
+const window = () => import(/* webpackChunkName: "window" */ './window')
 
 export default {
   // name: 'App',
   components: {
      leftSide,
      navTop,
+     window
   },
   mounted() {
     

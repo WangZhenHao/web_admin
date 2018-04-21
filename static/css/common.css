@@ -12,10 +12,19 @@ html, body {
 	height: 100%;
 	font-family: 'Microsoft YaHei';
 }
+
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+.w-h-100 {
+	width: 100%;
+	height: 100%;
+}
+.bg-white {
+	background: #fff;
 }
 .p-ten {
 	padding: 10px;
@@ -32,8 +41,20 @@ ul {
 .p-t-ten {
 	padding-top: 10px;
 }
+.p-r-ten {
+	padding-right: 10px;
+}
 a {
 	text-decoration: none;
+}
+.rel {
+	position: relative;
+}
+.abs {
+	position: absolute;
+}
+.flex-wrap {
+	display: flex;
 }
 /**
  * 加载层

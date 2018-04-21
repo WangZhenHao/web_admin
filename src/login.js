@@ -5,9 +5,8 @@ import vue from 'vue';
 router.beforeEach((to, from, next) => {
 	let isLogin = store.state.isLogin; 
 	//最终都需要调用next()方法去结束钩子,否则会出现死循环
+	store.commit('currentPath', {path: to.path});
 	if(to.matched.length == 0) {
-		// store.state.currentPasth = to.path;
-		store.commit('errorPath', {path: to.path});
 		next('/error');
 		return;
 	}
@@ -19,6 +18,7 @@ router.beforeEach((to, from, next) => {
 		}
 	} else {
 		if(isLogin) {
+			store.commit('addWindowList', to);
 			next();
 		} else {
 			next('/login');

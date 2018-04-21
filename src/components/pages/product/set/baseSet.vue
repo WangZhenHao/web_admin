@@ -97,9 +97,9 @@ h1 {
 		},
 		mounted() {
 			this.init();
-			setTimeout(function() {
-				this.showModal();	
-			}.bind(this), 1000);
+			// setTimeout(function() {
+			// 	this.showModal();	
+			// }.bind(this), 1000);
 		},
 		methods: {
 			pageChage(page) {

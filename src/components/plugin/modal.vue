@@ -22,7 +22,7 @@
 <script>
   /**
    * 模态框组件使用介绍:
-     <modal title="标题" btn-confirm="按钮名称" :show-btn="是否显示确认按钮" ref="组件名" @componentClickEvent="事件名">
+     <modal title="标题" btn-confirm="确认按钮名称" :show-btn="是否显示确认按钮" ref="组件名" @componentClickEvent="事件名">
       <div slot='modal-body'>
         显示内容
       </div>

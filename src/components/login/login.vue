@@ -21,7 +21,7 @@
 	</div>
 </template>
 <script>
-	import router from '../../router';
+	// import router from '../../router';
 	// console.log(router);
 	export default {
 		data() {
@@ -33,7 +33,7 @@
 		methods: {
 			toLogin() {
 				this.$store.commit('login', true);
-				router.push({ path: '/Index' });
+				this.$router.push({ path: '/Index' });
 			}
 		}
 	}

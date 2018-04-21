@@ -64,6 +64,7 @@
 	height: 100%;
 	top: 52px;
 	left: 0;
+	border-right: 1px solid #dad8d8;
 	background: #F5F5F5;
 	z-index: 2;
 }
