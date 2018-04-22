@@ -1,0 +1,2 @@
+webpackJsonp([3],{KlZe:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s={data:function(){return{msg:"我是产品数据页面"}},mounted:function(){console.log(this.msg)},methods:{show:function(){}}},i={render:function(){var t=this.$createElement,e=this._self._c||t;return e("div",[e("h3",[this._v(this._s(this.msg))])])},staticRenderFns:[]};var o=n("Z0/y")(s,i,!1,function(t){n("l1Ib")},null,null);e.default=o.exports},l1Ib:function(t,e){}});
+//# sourceMappingURL=3.1497d407ea1eac6f2ac0.js.map

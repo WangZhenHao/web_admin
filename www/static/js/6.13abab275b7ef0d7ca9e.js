@@ -1,0 +1,2 @@
+webpackJsonp([6],{DkCC:function(t,n){},smGU:function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var s={data:function(){return{msg:"我是类型设置数据"}},mounted:function(){console.log(this.msg)},methods:{show:function(){}}},i={render:function(){var t=this.$createElement,n=this._self._c||t;return n("div",[n("h5",[this._v(this._s(this.msg))])])},staticRenderFns:[]};var o=e("Z0/y")(s,i,!1,function(t){e("DkCC")},null,null);n.default=o.exports}});
+//# sourceMappingURL=6.13abab275b7ef0d7ca9e.js.map
