@@ -94,14 +94,17 @@
 		mounted() {
 		},
 		methods: {
+			//第一页
 			first() {
 				this.pageData['currentPage'] = 1;
 				this.pageChangeCallBack();
 			},
+			//最后一页
 			last() {
 				this.pageData['currentPage'] = this.pageData['totalPage'];
 				this.pageChangeCallBack();
 			},
+			//上一页
 			previous() {
 				this.pageData['currentPage']--;
 				if(this.pageData['currentPage'] <= 0) {
@@ -110,6 +113,7 @@
 				}
 				this.pageChangeCallBack();
 			},
+			// 下一页
 			next() {
 				this.pageData['currentPage']++;
 				if(this.pageData['currentPage'] > this.pageData['totalPage']) {
@@ -118,6 +122,7 @@
 				}
 				this.pageChangeCallBack()
 			},
+			//跳转到指定页
 			goTo() {
 				console.log(isNaN(this.goToPage));
 				if(this.goToPage > this.pageData['totalPage'] || this.goToPage <= 0 || isNaN(this.goToPage)) {
@@ -127,9 +132,11 @@
 				this.pageData['currentPage'] = this.goToPage;
 				this.pageChangeCallBack();
 			},
+			//设置分页大小
 			chageLimit() {
 				this.pageChangeCallBack();
 			},
+			//回掉函数
 			pageChangeCallBack() {
 				this.$emit('pageTabEvent', this.pageData);
 			},

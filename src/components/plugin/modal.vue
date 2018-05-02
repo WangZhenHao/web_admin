@@ -41,12 +41,15 @@
 		mounted() {
 		},
 		methods:{
+      //点击确认
       confirm() {
          this.$emit('modalClickEvent')
       },
+      //显示模态框
       show() {
         $('#' + this.modalId).modal('show');
       },
+      //隐藏模态框
       hide() {
         $('#' + this.modalId).modal('hide');
       }

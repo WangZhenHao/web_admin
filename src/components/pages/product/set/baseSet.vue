@@ -54,6 +54,7 @@
 				</p>
 			</div>
 		</modal>
+		<!-- <jedate v-model="params.start" valueType="timestamp" isShowTime="false" returnType="timestamp"></jedate> -->
 	</div>
 </template>
 <style>
@@ -64,17 +65,20 @@ h1 {
 </style>
 <script>
 	import nodeDate from '../../../index/testNodeData.js';
-	const modal = () => import(/* webpackChunkName: "modal" */ '@/components/plugin/modal.vue');
-	const pageTab = () => import(/* webpackChunkName: "pageTab" */ '@/components/plugin/pageTab.vue')
+	import modal from '@/components/plugin/modal.vue';
+	import pageTab from '@/components/plugin/pageTab.vue';
+	import jedate from '@/components/plugin/jedate.vue';
 	export default {
 		components: {
 			modal,
-			pageTab
+			pageTab,
+			jedate
 		},
 		data() {
 			return {
 				msg: '我是基本页面数据',
 				params: {
+					start: '1525055601'
 				},
 				search_type: [
 				   {value: 'goods_id', descri: '商品id'},
@@ -97,13 +101,14 @@ h1 {
 			}
 		},
 		mounted() {
+			console.log('重新加载')
 			this.init();
-			setTimeout(function() {
-				if(this.showModalBoolean) {
-					this.showModal();
-					this.showModalBoolean = false;	
-				}
-			}.bind(this), 1000);
+			// setTimeout(function() {
+			// 	if(this.showModalBoolean) {
+			// 		this.showModal();
+			// 		this.showModalBoolean = false;	
+			// 	}
+			// }.bind(this), 1000);
 		},
 		methods: {
 			pageChage(page) {
@@ -156,6 +161,11 @@ h1 {
 			},
 			changeUrlPath() {
 				page.changeUrlPath(this.params);
+				// var path = this.$route.path;
+				// this.$router.push({
+				// 	path: path,
+				// 	query: this.params
+				// })
 			},
 			clickHistoryBack() {
 				page.historyPopstate((res) => {

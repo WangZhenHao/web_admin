@@ -39,9 +39,9 @@
 }
 </style>
 <script>
-const leftSide = () => import(/* webpackChunkName: "leftSide" */ './leftSide');
-const navTop = () => import(/* webpackChunkName: "navTop" */ './navTop');
-const window = () => import(/* webpackChunkName: "window" */ './window')
+const leftSide = () => import(/* webpackChunkName: "index" */ './leftSide');
+const navTop = () => import(/* webpackChunkName: "index" */ './navTop');
+const window = () => import(/* webpackChunkName: "index" */ './window')
 
 export default {
   // name: 'App',
