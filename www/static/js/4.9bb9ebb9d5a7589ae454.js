@@ -1,2 +1,0 @@
-webpackJsonp([4],{FdTo:function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var s={data:function(){return{msg:"我是广告位页面数据"}},mounted:function(){console.log(this.msg)},methods:{show:function(){}}},o={render:function(){var t=this.$createElement,n=this._self._c||t;return n("div",[n("h2",[this._v(this._s(this.msg))])])},staticRenderFns:[]};var i=e("Z0/y")(s,o,!1,function(t){e("VTrD")},null,null);n.default=i.exports},VTrD:function(t,n){}});
-//# sourceMappingURL=4.9bb9ebb9d5a7589ae454.js.map

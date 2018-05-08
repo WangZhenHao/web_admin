@@ -35,10 +35,15 @@
 			pageChage(page) {
 				this.params['currentPage'] = page['currentPage'];
 				this.params['limit'] = page['limit'];
-				this.$router.push({
-					path: this.$route.path,
-					query: this.params
-				});
+				// this.$router.push({
+				// 	path: '/product/set/adSlot',
+				// 	query: this.params
+				// });
+				// debugger;
+				// this.$router.push({
+				// 	path: '/product/set/productClassify'
+				// })
+				console.log(this.$route)
 				this.doSearch();
 			},
 			doSearch() {
@@ -46,6 +51,7 @@
 			},
 			getList() {
 				console.log('我去请求数据:' + JSON.stringify(this.params));
+				page.changeUrlPath(this.params);
 			}
 		}
 	}

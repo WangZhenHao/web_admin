@@ -128,7 +128,8 @@
 				str.push(item + '=' +  params[item]);
 			}
 			str = `${location}?${str.join('&')}`;
-			history.pushState(params,'', str);
+			history.pushSta
+			.0000te(params,'', str);
 		},
 		/**
 		 * 日期时间换成Unix时间戳

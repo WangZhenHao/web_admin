@@ -54,7 +54,7 @@
 				</p>
 			</div>
 		</modal>
-		<!-- <jedate v-model="params.start" valueType="timestamp" isShowTime="false" returnType="timestamp"></jedate> -->
+		<jedate v-model="params.start" valueType="timestamp" isShowTime="false" returnType="timestamp"></jedate>
 	</div>
 </template>
 <style>
