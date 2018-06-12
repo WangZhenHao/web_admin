@@ -1,6 +1,15 @@
 <template>
 	<div>
 		<h2>{{msg}}</h2>
+		<div class="form-inline">
+			<div class="form-group">
+			    <select class="form-control" v-model="selected">
+			    	<option v-for="item in search_type" :value="item.value">{{item.descri}}</option>
+			    </select>
+			    <input type="text" class="form-control" v-model="params.keyword" placeholder="请输入商品Id" @keyup.enter="doSearch">
+				<button type="button" class="btn btn-primary" @click="doSearch">搜索</button>
+			</div>
+		</div>
 		<pageTab :page-data="pageData" @pageTabEvent="pageChage"></pageTab>
 	</div>
 </template>
@@ -22,36 +31,38 @@
 					limit: 20,
 					totalCount: 84
 				},
-				params: this.$route.query
+				params: this.$route.query,
+				selected: 'goods_id',
+				search_type: [
+				   {value: 'goods_id', descri: '商品id'},
+				   {value: 'uid', descri: '用户uid'},
+				],
 			}
 		},
 		mounted() {
 			this.getList();
 		},
+		beforeRouteUpdate(to, from, next) {
+			this.params = to.query;
+			this.getList();
+		},
 		methods: {
-			show() {
-				
-			},
 			pageChage(page) {
 				this.params['currentPage'] = page['currentPage'];
 				this.params['limit'] = page['limit'];
-				// this.$router.push({
-				// 	path: '/product/set/adSlot',
-				// 	query: this.params
-				// });
-				// debugger;
-				// this.$router.push({
-				// 	path: '/product/set/productClassify'
-				// })
-				console.log(this.$route)
 				this.doSearch();
 			},
 			doSearch() {
+				page.changeUrlPath(this.params);
 				this.getList();
 			},
 			getList() {
 				console.log('我去请求数据:' + JSON.stringify(this.params));
-				page.changeUrlPath(this.params);
+				// page.changeUrlPath(this.params);
+				// this.$router.push({
+				// 	path: '/product/set/adSlot',
+				// 	query: this.params
+				// })
 			}
 		}
 	}

@@ -54,7 +54,7 @@
 				</p>
 			</div>
 		</modal>
-		<jedate v-model="params.start" valueType="timestamp" isShowTime="false" returnType="timestamp"></jedate>
+		<!-- <jedate v-model="params.start" valueType="timestamp" isShowTime="false" returnType="timestamp"></jedate> -->
 	</div>
 </template>
 <style>
@@ -85,12 +85,12 @@ h1 {
 				   {value: 'uid', descri: '用户uid'},
 				],
 				selected: 'goods_id',
-				search_text: '',
 				list: nodeDate,
 				show_type: {
 					'1': '显示',
 					'0': '隐藏'
 				},
+				search_text: '',
 				pageData: {
 					currentPage: 1,
 					totalPage: 2,
@@ -101,14 +101,18 @@ h1 {
 			}
 		},
 		mounted() {
-			console.log('重新加载')
-			this.init();
+			this.getList();
 			// setTimeout(function() {
 			// 	if(this.showModalBoolean) {
 			// 		this.showModal();
 			// 		this.showModalBoolean = false;	
 			// 	}
 			// }.bind(this), 1000);
+		},
+		beforeRouteUpdate(to, from, next) {
+			console.log(to)
+			this.params = to.query;
+			this.getList();
 		},
 		methods: {
 			pageChage(page) {
@@ -123,57 +127,33 @@ h1 {
 			showModal() {
 				this.$refs.message.show();
 			},
-			//必须初始化的操作
-			init() {
-			    // 获取url上面的参数,用于用户刷新
-			    this.getUrlParams();
-				//获取数据列表
-				this.getListInit();
-				this.clickHistoryBack();
-			},
-
 			doSearch() {
 				this.params = {};
 				if(this.search_text) {
 				   // this.$set(this.params, this.selected, this.search_text);
 				   this.params[this.selected] = this.search_text;
 				}
-				this.getListInit();
+				page.changeUrlPath(this.params);
+				this.getList();
 			},
 			//获取数据列表
-			getlist() {
+			getList() {
+				
 				console.log('我去请求数据了,请求参数为:' + JSON.stringify(this.params));
 
 			},
 
-			//数据列表初始化
-			getListInit(type) {
-				if(type != 'noNeedHistoryChange') {
-					this.changeUrlPath();
-				}
-				this.getlist();
-			},
-			getUrlParams() {
-				let urlParams = page.getUrlParams();
-				if(urlParams) {
-					this.params = urlParams;
-				}
-			},
-			changeUrlPath() {
-				page.changeUrlPath(this.params);
-				// var path = this.$route.path;
-				// this.$router.push({
-				// 	path: path,
-				// 	query: this.params
-				// })
-			},
-			clickHistoryBack() {
-				page.historyPopstate((res) => {
-					this.params = res;
-					this.search_text = this.params[Object.keys(this.params)[0]];
-					this.getListInit('noNeedHistoryChange');
-				})
-			}
+			// changeUrlPath() {
+				
+			// },
+
+			// clickHistoryBack() {
+			// 	page.historyPopstate((res) => {
+			// 		this.params = res;
+			// 		this.search_text = this.params[Object.keys(this.params)[0]];
+			// 		this.getListInit('noNeedHistoryChange');
+			// 	})
+			// }
 		}
 	}
 </script>
