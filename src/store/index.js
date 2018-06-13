@@ -35,11 +35,11 @@ const store = new Vuex.Store({
 		 */
 		addWindowList(state, to) {
 			if(!state.list[to.path]) {
-				state.list[to.path] = to.meta['title'];
-				var json = {
+				let json = {
 					path: to.path,
 					title: to.meta['title']
 				};
+				state.list[to.path] = to.meta['title'];
 				state.windowList.unshift(json);
 			}
 

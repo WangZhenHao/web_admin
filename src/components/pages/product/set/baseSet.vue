@@ -100,25 +100,18 @@ h1 {
 				showModalBoolean: true
 			}
 		},
-		mounted() {
-			this.getList();
-			// setTimeout(function() {
-			// 	if(this.showModalBoolean) {
-			// 		this.showModal();
-			// 		this.showModalBoolean = false;	
-			// 	}
-			// }.bind(this), 1000);
-		},
-		beforeRouteUpdate(to, from, next) {
-			console.log(to)
-			this.params = to.query;
+		// mounted() {
+		// 	this.getList();
+		// },
+		activated() {
 			this.getList();
 		},
 		methods: {
-			pageChage(page) {
-				this.params['currentPage'] = page['currentPage'];
-				this.params['limit'] = page['limit'];
-				this.getListInit();
+			pageChage(pageDate) {
+				this.params['currentPage'] = pageDate['currentPage'];
+				this.params['limit'] = pageDate['limit'];
+				page.changeUrlPath(this.params);
+				this.getList();
 			},
 			confirm() {
 				window.open('https://github.com/WangZhenHao/web_admin/')
@@ -138,22 +131,13 @@ h1 {
 			},
 			//获取数据列表
 			getList() {
-				
 				console.log('我去请求数据了,请求参数为:' + JSON.stringify(this.params));
 
-			},
-
-			// changeUrlPath() {
-				
-			// },
-
-			// clickHistoryBack() {
-			// 	page.historyPopstate((res) => {
-			// 		this.params = res;
-			// 		this.search_text = this.params[Object.keys(this.params)[0]];
-			// 		this.getListInit('noNeedHistoryChange');
-			// 	})
-			// }
+			}
+		},
+		beforeRouteUpdate(to, from, next) {
+			this.params = to.query;
+			this.getList();
 		}
 	}
 </script>

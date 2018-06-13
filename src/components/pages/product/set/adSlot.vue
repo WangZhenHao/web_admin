@@ -39,9 +39,12 @@
 				],
 			}
 		},
-		mounted() {
+		activated() {
 			this.getList();
 		},
+		// mounted() {
+			
+		// },
 		beforeRouteUpdate(to, from, next) {
 			this.params = to.query;
 			this.getList();
