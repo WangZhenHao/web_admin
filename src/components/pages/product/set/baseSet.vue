@@ -110,6 +110,8 @@ h1 {
 			pageChage(pageDate) {
 				this.params['currentPage'] = pageDate['currentPage'];
 				this.params['limit'] = pageDate['limit'];
+				// this.$set(this.params, 'currentPage', pageDate['currentPage'])
+				// this.$set(this.params, 'limit', pageDate['limit']);
 				page.changeUrlPath(this.params);
 				this.getList();
 			},
@@ -132,7 +134,6 @@ h1 {
 			//获取数据列表
 			getList() {
 				console.log('我去请求数据了,请求参数为:' + JSON.stringify(this.params));
-
 			}
 		},
 		beforeRouteUpdate(to, from, next) {
