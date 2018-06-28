@@ -27,7 +27,7 @@ const nodeList = [
 
 	{"id":"15","title":"音乐管理","name":"musicManager","param":"","is_show":"1","pid":"7","type":"1","icon":"","status":"1","sort_index":"90"},
 	{"id":"16","title":"音乐列表","name":"musicList","param":"","is_show":"1","pid":"15","type":"1","icon":"","status":"1","sort_index":"90"},
-	{"id":"17","title":"音乐上传","name":"musicUpload","param":"","is_show":"1","pid":"15","type":"1","icon":"","status":"1","sort_index":"90"},
+	{"id":"17","title":"音乐上传","name":"musicUpload","param":"","is_show":"1","pid":"15","type":"1","icon":"","status":"1","sort_index":"90"}
 
 ]
 

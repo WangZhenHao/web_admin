@@ -30,6 +30,14 @@ let routerPath = [
           }
         },
         {
+          path: '/system/node/addNode',
+          // component: baseSet
+          component: _import('/system/node/addNode'),
+          meta: {
+            title: '添加权限',
+          }
+        },
+        {
           path: '/error',
           component: notFoundComponent,
           meta: {
