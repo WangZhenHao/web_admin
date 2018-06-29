@@ -21,7 +21,7 @@
 		height: 40px;
 		width: 100%;
 		padding-left: 250px;
-
+		z-index: 1;
 	}
 	.window-wrap {
 		border-bottom: 1px solid #e9e9ea;

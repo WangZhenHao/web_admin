@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store';
+import '../static/js/page.js';
 // import Vuex from 'vuex';
 import './beforeRouter.js'
 //Vuex进行状态管理

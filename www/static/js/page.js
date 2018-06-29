@@ -34,7 +34,7 @@
 				// 默认get请求
 				type: options.method || 'GET',
 				//默认异步请求
-				async: options.async || true,
+				async: options.async === true ? true : false,
 				//超时时间
 				timeout: options.timeout || 15000,
 				//请求之前
@@ -194,5 +194,4 @@
 		},
 	};
 	window.page = page;
-
 })()
