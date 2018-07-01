@@ -1,5 +1,33 @@
  $(function(){  
 	var webapp = {
+		/**
+		 * 显示加载框
+		 * @return {[type]} [description]
+		 */
+		showLoading() {
+			if($('#loading-wrap').length) {
+				$('#loading-wrap').show();
+			} else {
+				// <i class="glyphicon glyphicon-refresh"></i>
+				let html = `<div id="loading-wrap">
+								<div class="text-center">
+									<img src="./static/images/loading-0.gif"/>
+								</div>
+							</div>`;
+				$('body').append(html);	
+			}
+		},
+		/**
+		 * 隐藏加载框
+		 * @return {[type]} [description]
+		 */
+		closeLoading() {
+			if($('#loading-wrap').length > 0) {
+				setTimeout(() => {
+					$('#loading-wrap').hide();
+				}, 200);
+			}
+		},
 		/**成功弹窗
 		 * [success description]
 		 * @param  {[type]} message [description]

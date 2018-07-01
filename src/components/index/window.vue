@@ -1,8 +1,8 @@
 <template>
 	<div class="affix window">
-		<ul class="p-l-ten bg-white w-h-100 window-wrap clearfix">
+		<ul class="p-l-ten bg-white w-h-100 window-wrap overflow-h clearfix">
 			<li v-for="(item,index) in windowList" 
-			 class="win-item cursor-pointer pull-left text-center rel" 
+			 class="win-item cursor-pointer text-center rel" 
 			:class="{'active': item.path == currentPath}"
 			 @click="redirect(item)">
 				<span class="win-title" :data-url="item.path">{{item.title}}</span>
@@ -32,6 +32,7 @@
 		height: 100%;
 		border-right: 1px solid #eaeaea;
 		color: #676a6c;
+		display: inline-block;
 	}
 	.window-wrap .win-item.active {
 		background: #f3f3f4;

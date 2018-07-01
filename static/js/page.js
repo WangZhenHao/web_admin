@@ -9,7 +9,7 @@
 		 * @return {[type]}      [description]
 		 */
 		apiGet(url, data, options ) {
-			this.get(url, data, options);
+			return this.get(url, data, options);
 		},
 		/**
 		 * api中post请求
@@ -18,74 +18,62 @@
 		 * @param  {[type]} options [description]
 		 * @return {[type]}      [description]
 		 */
-		apiPost(url, data, options) {
-			options['method'] = 'PSOT';
-			this.get(url, data, options);
+		apiPost(url, data, options = {}) {
+			options['method'] = 'POST';
+			return this.get(url, data, options);
 		},
 		/*
 		  默认get请求
 		 */
 		get(url, data, options) {
-			$.ajax({
-				//url地址
-				url: url,
-				//参数  				
-				data: data,
-				// 默认get请求
-				type: options.method || 'GET',
-				//默认异步请求
-				async: options.async === true ? true : false,
-				//超时时间
-				timeout: options.timeout || 15000,
-				//请求之前
-				beforeSend: (requrest) => {
-					this.showLoading();
-				},
-				//成功回调				
-				success: (res) => {
-					this.closeLoading();
-					options.successFn(res);
-				},
-				//失败回调
-				error: (res) => {
-					this.closeLoading();
-					options.errorFn(res);
-				},
-				//失败或者成功的回调
-				complete: (requrest, status) => {
-					if(status == 'timeout') {
-						this.closeLoading();
+			let apiUrl = options['apiUrl'] || config.api;
+			url = apiUrl + url;
+			let promise = new Promise((reslove, reject) => {
+				$.ajax({
+					//url地址
+					url: url,
+					//参数  				
+					data: data,
+					// 默认get请求
+					type: options.method || 'GET',
+					//默认异步请求
+					async: options.async === true ? true : false,
+					//超时时间
+					timeout: options.timeout || 15000,
+					//请求之前
+					beforeSend: (requrest) => {
+						webapp.showLoading();
+					},
+					//成功回调				
+					success: (res) => {
+						webapp.closeLoading();
+						// options.successFn(res);
+						if(res.code == 0) {
+							reslove(res);
+						} else {
+							webapp.error(res.msg);
+							reject(res);
+						}
+					},
+					//失败回调
+					error: (res) => {
+						webapp.closeLoading();
+						// options.errorFn(res);
+						webapp.error('网络错误了~~');
+						reject(res);
+					},
+					//失败或者成功的回调
+					complete: (requrest, status) => {
+						if(status == 'timeout') {
+							webapp.closeLoading();
+							webapp.error('请求超时,请刷新重试!');
+						}
 					}
-				}
+				})
 			})
+			return promise;
 		},
-		/**
-		 * 显示加载框
-		 * @return {[type]} [description]
-		 */
-		showLoading() {
-			if($('#loading-wrap').length > 0) {
-				$('#loading-wrap').show();
-			} else {
-				let html = `<div id="loading-wrap">
-								<div class="loading-icon text-center">
-									<i class="glyphicon glyphicon-refresh"></i>
-								</div>
-							</div>`;
-				$('body').append(html);	
-			}
-		},
-		/**
-		 * 隐藏加载框
-		 * @return {[type]} [description]
-		 */
-		closeLoading() {
-			if($('#loading-wrap').length > 0) {
-				setTimeout(() => {
-					$('#loading-wrap').hide();
-				}, 200);
-			}
-		},
+		
 		/**
 		 * 获取ulr中的参数
 		 * @return {[type]} [description]

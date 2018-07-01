@@ -104,6 +104,7 @@ h1 {
 		// 	this.getList();
 		// },
 		activated() {
+			page.showLoading();
 			this.getList();
 		},
 		methods: {

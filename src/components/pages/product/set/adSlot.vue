@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h2>{{msg}}</h2>
 		<div class="form-inline">
 			<div class="form-group">
 			    <select class="form-control" v-model="selected">
@@ -10,7 +9,13 @@
 				<button type="button" class="btn btn-primary" @click="doSearch">搜索</button>
 			</div>
 		</div>
-		<pageTab :page-data="pageData" @pageTabEvent="pageChage"></pageTab>
+		<div>
+			<li v-for="item in list">
+				{{item.shopName}}
+				<img :src="item.shopLogo" width="100" height="50">
+			</li>
+		</div>
+		<pageTab v-if="list.length" :page-data="pageData" @pageTabEvent="pageChage"></pageTab>
 	</div>
 </template>
 <style>
@@ -31,41 +36,66 @@
 					limit: 20,
 					totalCount: 84
 				},
-				params: this.$route.query,
-				selected: 'goods_id',
+				params: {
+					longitude: 114,
+					latitude: 22,
+					zx_token: 'oV3Y2s-I9d9HoEphk0712a0VqYX8'
+				},
+				selected: 'keyword',
 				search_type: [
-				   {value: 'goods_id', descri: '商品id'},
+				   {value: 'keyword', descri: '关键字'},
 				   {value: 'uid', descri: '用户uid'},
 				],
+				list: []
 			}
 		},
 		activated() {
+			// this.params = this.$route.query;
+			// $.extend(this.params, this.$route.query);
 			this.getList();
 		},
-		// mounted() {
-			
-		// },
 		beforeRouteUpdate(to, from, next) {
 			this.params = to.query;
 			this.getList();
 		},
 		methods: {
 			pageChage(page) {
-				this.params['currentPage'] = page['currentPage'];
-				this.params['limit'] = page['limit'];
+				this.params['pageNo'] = page['currentPage'];
+				this.params['pageSize'] = page['limit'];
 				this.doSearch();
+			},
+			setPage(data) {
+				this.pageData = {
+					currentPage: data.pageNo,
+					totalPage: data.totalPage,
+					limit: 20,
+					totalCount:  data.pageNo * data.totalPage
+				}
 			},
 			doSearch() {
 				page.changeUrlPath(this.params);
 				this.getList();
 			},
 			getList() {
-				console.log('我去请求数据:' + JSON.stringify(this.params));
-				// page.changeUrlPath(this.params);
-				// this.$router.push({
-				// 	path: '/product/set/adSlot',
-				// 	query: this.params
+				// page.apiPost('/index/v3.2/searchShop', $.extend(this.$route.query, this.params),
+				// {
+				// 	successFn: res => {
+				// 		this.setPage(res.data);
+				// 		this.list = res.data.shopList;
+				// 	},
+				// 	errorFn: res => {
+				// 		console.log(res);
+				// 	}
 				// })
+				this.list = [];
+				page.apiPost('/index/v3.2/searchShop', $.extend(this.$route.query, this.params))
+				.then(res => {
+					this.setPage(res.data);
+					this.list = res.data.shopList;
+				}).catch(res => {
+
+				})
+				// console.log('我去请求数据:' + JSON.stringify(this.params));
 			}
 		}
 	}
