@@ -18,8 +18,8 @@ const notFoundComponent = () => import('@/components/childComponents/notFoundCom
 let routerPath = [
         {
           path: '/index',
-          // redirect: '/system/info/infoIndex',
-          redirect: '/product/set/baseSet' 
+          redirect: '/system/info/infoIndex',
+          // redirect: '/product/set/baseSet' 
         },
         {
           path: '/system/info/infoIndex',
@@ -44,38 +44,34 @@ let routerPath = [
             title: '错误',
           }
         },
-        {
-          path: '/product/set/baseSet',
-          // component: baseSet
-          component: _import('/product/set/baseSet'),
-          meta: {
-            title: '基本设置',
-          }
-        },
-        {
-          path: '/product/set/adSlot',
-          // component: adSlot,
-          component: _import('/product/set/adSlot'),
-          meta: {
-            title: '广告位',
-          }
-        },
-        {
-          path: '/product/set/productClassify',
-          // component: productClassify,
-          component: _import('/product/set/productClassify'),
-          meta: {
-            title: '产品分类',
-          }
-        },
-        {
-          path: '/product/set/typeSet',
-          // component: typeSet,
-          component: _import('/product/set/typeSet'),
-          meta: {
-            title: '类型设置',
-          }
-        }
+        // {
+        //   path: '/product/set/baseSet',
+        //   component: _import('/product/set/baseSet'),
+        //   meta: {
+        //     title: '基本设置',
+        //   }
+        // },
+        // {
+        //   path: '/product/set/adSlot',
+        //   component: _import('/product/set/adSlot'),
+        //   meta: {
+        //     title: '广告位',
+        //   }
+        // },
+        // {
+        //   path: '/product/set/productClassify',
+        //   component: _import('/product/set/productClassify'),
+        //   meta: {
+        //     title: '产品分类',
+        //   }
+        // },
+        // {
+        //   path: '/product/set/typeSet',
+        //   component: _import('/product/set/typeSet'),
+        //   meta: {
+        //     title: '类型设置',
+        //   }
+        // }
 ]
 
 export default routerPath;

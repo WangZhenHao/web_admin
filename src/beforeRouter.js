@@ -3,6 +3,7 @@ import store from './store';
 import vue from 'vue';
 
 router.beforeEach((to, from, next) => {
+	console.log(to)
 	let isLogin = store.state.isLogin; 
 	//最终都需要调用next()方法去结束钩子,否则会出现死循环
 	store.commit('currentPath', {path: to.path});

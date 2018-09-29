@@ -51,4 +51,7 @@
 .navbar-options {
 	margin-right: 20px;
 }
+.dropdown:hover .dropdown-menu{
+	display: block;
+}
 </style>

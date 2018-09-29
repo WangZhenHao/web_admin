@@ -39,7 +39,7 @@
 				params: {
 					longitude: 114,
 					latitude: 22,
-					zx_token: 'oV3Y2s-I9d9HoEphk0712a0VqYX8'
+					zx_token: 'oNmxa07aIOf2q_3023rqoG_4M4cw'
 				},
 				selected: 'keyword',
 				search_type: [
@@ -52,6 +52,8 @@
 		activated() {
 			// this.params = this.$route.query;
 			// $.extend(this.params, this.$route.query);
+			
+			// console.log()
 			this.getList();
 		},
 		beforeRouteUpdate(to, from, next) {
@@ -69,7 +71,7 @@
 					currentPage: data.pageNo,
 					totalPage: data.totalPage,
 					limit: 20,
-					totalCount:  data.pageNo * data.totalPage
+					totalCount:  20 * data.totalPage
 				}
 			},
 			doSearch() {

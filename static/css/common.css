@@ -76,6 +76,7 @@ a {
 	transform: translate3d(-50%, 0, 0);
 	/*background: rgba(0, 0, 0, .25);*/
 	line-height: 100px;
+	z-index: 99999;
 }
 .loading-icon {
 	font-size: 36px;

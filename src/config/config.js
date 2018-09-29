@@ -1,6 +1,7 @@
 (function() {
 	let config = {
-		api: 'https://test.zhongxiang51.com/zxwy-userside'
+		// api: 'https://test.zhongxiang51.com/zxwy-userside'
+		
 	};
 	window.config = config;
 })();

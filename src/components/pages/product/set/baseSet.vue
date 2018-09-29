@@ -11,6 +11,7 @@
 			</div>
 		</div>
 		<div>
+			<!-- <el-button type="primary">主要按钮</el-button> -->
 			<table class="table table-striped">
 			   <thead>
 					<tr>
@@ -47,13 +48,13 @@
 			</table>
 		</div>
 		<pageTab :page-data="pageData" @pageTabEvent="pageChage"></pageTab>
-		<modal title="标题" :show-btn="true" ref="message" @modalClickEvent="confirm">
+		<!-- <modal title="标题" :show-btn="true" ref="message" @modalClickEvent="confirm">
 			<div slot='modal-body'>
 				<p class="text-center">
 					<a target="_blank" href="https://github.com/WangZhenHao/web_admin">去gitHub看看简介(https://github.com/WangZhenHao/web_admin/)</a>
 				</p>
 			</div>
-		</modal>
+		</modal> -->
 		<!-- <jedate v-model="params.start" valueType="timestamp" isShowTime="false" returnType="timestamp"></jedate> -->
 	</div>
 </template>
@@ -65,14 +66,10 @@ h1 {
 </style>
 <script>
 	import nodeDate from '../../../index/testNodeData.js';
-	import modal from '@/components/plugin/modal.vue';
 	import pageTab from '@/components/plugin/pageTab.vue';
-	import jedate from '@/components/plugin/jedate.vue';
 	export default {
 		components: {
-			modal,
 			pageTab,
-			jedate
 		},
 		data() {
 			return {
@@ -104,7 +101,7 @@ h1 {
 		// 	this.getList();
 		// },
 		activated() {
-			page.showLoading();
+			// webapp.showLoading();
 			this.getList();
 		},
 		methods: {

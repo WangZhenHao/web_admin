@@ -103,8 +103,14 @@
 		},
 
 		init() {
-			this.alertFrameEvent()
-		}
+			this.alertFrameEvent();
+			// this.scroll();
+		},
+		// scroll() {
+		// 	window.onscroll  = function(e) {
+		// 		console.log(document.documentElement.scrollTop);
+		// 	}
+		// }
 
 	};
 

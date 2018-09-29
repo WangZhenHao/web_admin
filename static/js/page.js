@@ -8,7 +8,7 @@
 		 * @param  {[type]} options [description]
 		 * @return {[type]}      [description]
 		 */
-		apiGet(url, data, options ) {
+		apiGet(url, data, options = {} ) {
 			return this.get(url, data, options);
 		},
 		/**
@@ -46,6 +46,7 @@
 					},
 					//成功回调				
 					success: (res) => {
+						document.documentElement.scrollTop = 0;
 						webapp.closeLoading();
 						// options.successFn(res);
 						if(res.code == 0) {
