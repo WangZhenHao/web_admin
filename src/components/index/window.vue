@@ -1,7 +1,7 @@
 <template>
 	<div class="affix window">
 		<ul class="p-l-ten bg-white w-h-100 window-wrap overflow-h clearfix">
-			<li v-for="(item,index) in windowList" 
+			<li v-for="(item, index) in windowList" 
 			 class="win-item cursor-pointer text-center rel" 
 			:class="{'active': item.path == currentPath}"
 			 @click="redirect(item)">

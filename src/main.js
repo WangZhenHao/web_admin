@@ -15,6 +15,29 @@ import 'STATIC/css/common.css';
 // import 'element-ui/lib/theme-chalk/index.css';
 
 // Vue.use(ElementUI);
+import {
+	Dialog,
+	Input,
+	Select,
+	Option,
+	Table,
+	TableColumn,
+	Form,
+	FormItem,
+	Button,
+	ButtonGroup
+} from 'element-ui'
+
+Vue.use(Dialog);
+Vue.use(Input);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Table);
+Vue.use(TableColumn);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(Button);
+Vue.use(ButtonGroup);
 
 Vue.config.productionTip = false
 

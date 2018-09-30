@@ -1,7 +1,7 @@
 (function() {
 	let config = {
-		// api: 'https://test.zhongxiang51.com/zxwy-userside'
-		
+		//闪送接口
+		api: 'https://test.zhongxiang51.com/zxss-api'
 	};
 	window.config = config;
 })();

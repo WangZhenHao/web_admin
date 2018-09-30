@@ -26,7 +26,7 @@
 					</i>
 				</div>
 				<ul class="header-sub-list">
-					<li v-for="nodeSubInfo in nodeSub['child']">
+					<li v-for="nodeSubInfo in nodeSub['child']" v-if="nodeSubInfo.is_show == 1">
 						<router-link :to="'/' + nodeListChild.name + '/' + nodeSub.name + '/' + nodeSubInfo.name">{{nodeSubInfo.title}}</router-link>
 					</li>
 				</ul>
