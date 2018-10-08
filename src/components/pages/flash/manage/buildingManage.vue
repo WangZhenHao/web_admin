@@ -6,9 +6,9 @@
 
 <script>
 
-  // import routerScript from '@/components/plugin/routerScript'
-  // import { autoComplete } from 'STATIC/js/module/Amap.js'
-  // import { addMansion, getMansionList, editManSion } from '@/config/apiList.js'
+  import routerScript from '@/components/plugin/routerScript'
+  import { autoComplete } from 'STATIC/js/module/Amap.js'
+  import { addMansion, getMansionList, editManSion } from '@/config/apiList.js'
   export default {
     components: {
       routerScript
@@ -33,8 +33,11 @@
       }
     },
     activated() {
-      alert(1)
-      // this.getList();
+      // alert(1)
+      // page.apiPost('/operator/building/v1/list', {}).then(res => {
+        
+      // })
+      this.getList();
     },
     methods: {
       mapFinsh() {
@@ -86,6 +89,7 @@
 
       },
       getList() {
+        // debugger;
         getMansionList(this.params)
         .then(res => {
           this.list = res.data.list;

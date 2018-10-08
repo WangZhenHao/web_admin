@@ -25,12 +25,13 @@
 	</div>
 </template>
 <script>
-	import router from '../../router';
+	// import router from '../../router';
 	export default {
 		methods: {
 			logout() {
-				this.$store.commit('login', false);
-				router.push({path: '/login'});
+				this.$store.commit('loginOut');
+				// page.clearLocalStorage('token');
+				this.$router.push({path: '/login'});
 			}
 		}
 	}

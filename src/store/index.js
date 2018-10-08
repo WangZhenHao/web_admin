@@ -3,10 +3,10 @@ import Vuex from 'vuex';
 
 
 Vue.use(Vuex);
-
+// console.log(page)
 const store = new Vuex.Store({
 	state: {
-		isLogin: true,
+		isLogin:  page.getLocalStorage('token') ? true : false,
 		currentPath: '',
 		list: {},
 		windowList: [],
@@ -18,8 +18,16 @@ const store = new Vuex.Store({
 		 * @param  {[type]} flag  [description]
 		 * @return {[type]}       [description]
 		 */
-		login(state, flag) {
-			state.isLogin = flag;
+		login(state, token) {
+			state.isLogin = true;
+			page.setLocalStorage('token', token);
+		},
+		/**
+		退出登录
+		*/
+		loginOut(state) {
+			state.isLogin = false;
+			page.clearLocalStorage('token');
 		},
 		/**
 		 * 当前路由

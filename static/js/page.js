@@ -41,12 +41,15 @@
 					//超时时间
 					timeout: options.timeout || 15000,
 					//请求之前
-					beforeSend: (requrest) => {
+					beforeSend: (xhr) => {
 						webapp.showLoading();
+						if(this.getLocalStorage('token')) {
+							 xhr.setRequestHeader('token', this.getLocalStorage('token'));
+						}
 					},
 					//成功回调				
 					success: (res) => {
-						document.documentElement.scrollTop = 0;
+						// document.documentElement.scrollTop = 0;
 						webapp.closeLoading();
 						// options.successFn(res);
 						if(res.code == 0) {
@@ -180,6 +183,103 @@
 				}
 			});
 			return str;
+		},
+		/**
+		 * 设置cookies
+		 * @param {[type]} name    cookie名称    必填
+		 * @param {[type]} value   cookie值		 必填
+		 * @param {[type]} expires 缓存多少秒	 可填(默认session 关闭浏览器会自动的清除)
+		 * @param {[type]} options 对象          可填(默认设置根目录)
+		 */
+		setCookies: function(name, value, expires, options = {}) {
+			var cookieText = name + '=' + value;
+			options.path = options.path || '/';
+			if(expires) {
+				var timestamp = (new Date().getTime()) / 1000 + expires;
+				var dateObj = new Date(timestamp * 1000);
+				cookieText += '; expires=' + dateObj.toGMTString();
+			}
+
+			if(options.path) {
+				cookieText += '; path=' + options.path;
+			}
+			if(options.domain) {
+				cookieText += '; domain=' + options.domain;
+			}
+			document.cookie = cookieText;
+		},
+		/**
+		 * 获取cookie的值
+		 * @param  {[type]} name cookie值
+		 * @return {[type]}      [description]
+		 */
+		getCookie: function(name) {
+			var value = document.cookie,
+				cookieName = name + '=';
+				cookieStart = value.indexOf(cookieName),
+				cookieValue = null;
+			if(cookieStart > -1) {
+				var cookieEnd = value.indexOf(';', cookieStart);
+				cookieEnd = cookieEnd > -1 ? cookieEnd : value.length;
+				cookieValue = value.substring(cookieStart + cookieName.length, cookieEnd)
+			}
+			return cookieValue;
+		},
+		/**
+		 * 清除cookies
+		 * 
+		 * @return {[type]} [description]
+		 */
+		clearCookies: function(name,options = {}) {
+			this.setCookies(name, '', -1, options);
+		},
+		/**
+		 * 获取本地缓存
+		 * @param {[type]} key   	键         必填
+		 * @return {[type]} [description]
+		 */
+		getLocalStorage: function(key) {
+			var json = JSON.parse(localStorage.getItem(key));
+			if(json) {
+				if(json.expires) {
+					var timestamp = parseInt(+new Date() / 1000);
+					if(timestamp > json.expires) {
+						this.clearLocalStorage(key)
+						return null;
+					}
+				}
+				return json[key];
+			} else {
+				return null;
+			}
+		},
+		/**
+		 * 设置本地缓存(可设置过期时间)
+		 * @param {[type]} key   	键           必填
+		 * @param {[type]} value 	值		     必填
+		 * @param {[type]} expires  保存多少秒   可填(秒)
+		 */
+		setLocalStorage: function(key, value, expires) {
+			var json = {}
+			json[key] = value;
+			if(expires) {
+				var timestamp = parseInt(+new Date() / 1000) + expires;
+				json['expires'] = timestamp;  
+			}
+
+			localStorage.setItem(key, JSON.stringify(json));
+		},
+		/**
+		 * 清除本地缓存
+		 * @param {[type]} key 	键		可填(默认清除所有)
+		 * @return {[type]} [description]
+		 */
+		clearLocalStorage: function(key) {
+			if(key) {
+				localStorage.removeItem(key);
+			} else {
+				localStorage.clear();
+			}
 		},
 	};
 	window.page = page;

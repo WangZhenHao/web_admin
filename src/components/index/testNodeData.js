@@ -15,18 +15,18 @@ const nodeList = [
 	/****-----------------**/
 	{
 		id: 7,
-		title: '旅游',
-		name: 'travel',
+		title: '闪送',
+		name: 'flash',
 		is_show: 1,
 		pid: 0,
-		icon: 'glyphicon glyphicon-plane',
+		icon: 'glyphicon glyphicon-road',
 		sort_index: 23
 	},
 	{"id":"8","title":"管理","name":"manage","is_show":"1","pid":"7","icon":"","sort_index":"34"},
-	{"id":"9","title":"产品列表","name":"productList","is_show":"1","pid":"8","icon":"","sort_index":"34"},
-	{"id":"10","title":"旅游订单","name":"lyorderlist","is_show":"0","pid":"8","icon":"","sort_index":"34"},
-	{"id":"11","title":"会员管理","name":"memberMange","is_show":"1","pid":"8","icon":"","sort_index":"34"},
-	{"id":"11","title":"驴妈妈商品库","name":"lvmmlist","is_show":"1","pid":"8","icon":"","sort_index":"34"},
+	{"id":"9","title":"大厦管理","name":"buildingManage","is_show":"1","pid":"8","icon":"","sort_index":"34"},
+	// {"id":"10","title":"旅游订单","name":"lyorderlist","is_show":"0","pid":"8","icon":"","sort_index":"34"},
+	// {"id":"11","title":"会员管理","name":"memberMange","is_show":"1","pid":"8","icon":"","sort_index":"34"},
+	// {"id":"11","title":"驴妈妈商品库","name":"lvmmlist","is_show":"1","pid":"8","icon":"","sort_index":"34"},
 	/**----------------**/
 	// {"id":"7","title":"微品","name":"product","is_show":"0","pid":"0","icon":"glyphicon glyphicon-qrcode","sort_index":"72"},
 

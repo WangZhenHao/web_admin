@@ -42,10 +42,10 @@ let routerPath = [
           }
         },
         {
-          path: '/travel/manage/productList',
-          component: _import('/travel/manage/productList'),
+          path: '/flash/manage/buildingManage',
+          component: _import('/flash/manage/buildingManage'),
           meta: {
-            title: '产品列表'
+            title: '大厦管理'
           }
         }
 ]

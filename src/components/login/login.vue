@@ -11,7 +11,7 @@
 					  </div>
 					  <div class="form-group">
 					    <label class="login-color" for="userPasswrod">密码</label>
-					    <input type="password" class="form-control" id="userPasswrod" placeholder="请输入密码" v-model="password">
+					    <input type="password" class="form-control" id="userPasswrod" placeholder="请输入密码" v-model="password" @keyup.enter="toLogin">
 					  </div>
 					  <input type="button" class="btn btn-lg btn-success" value="登 录" id="login-btn" @click="toLogin">
 				 </form>
@@ -21,17 +21,46 @@
 	</div>
 </template>
 <script>
+	import { login } from '@/config/apiList.js'
 	export default {
 		data() {
 			return {
-				userAccount: 'user',
-				password: '12456'
+				userAccount: '',
+				password: ''
 			}
 		},
 		methods: {
+			check() {
+				if(!this.userAccount) {
+					webapp.error('请输入账号');
+					return false;
+				} else if(!this.password) {
+					webapp.error('请输入密码');
+					return false;
+				} else {
+					return true;
+				}
+			},
 			toLogin() {
-				this.$store.commit('login', true);
-				this.$router.push({ path: '/Index' });
+				if(this.check()) {
+					this.login();
+					// this.$store.commit('login', true);
+					// this.$router.push({ path: '/Index' });
+				} 
+			},
+			login() {
+				login({
+					accountName: this.userAccount,
+					password: this.password
+				}).then(res => {
+					// this.$store.commit('login', true);
+					// page.setLocalStorage('token', res.data.token);
+					webapp.success('登录成功');
+					this.$store.commit('login', res.data.token);
+					this.$router.push({ path: '/Index' });
+				}).catch(res => {
+
+				})
 			}
 		}
 	}
