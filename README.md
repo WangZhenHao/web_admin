@@ -1,27 +1,11 @@
-# web_admin
-## 后台管理网站
->本项目可用于企业后台管理,可以自由开发各种vue组件,满足大多数的业务需求,代码简洁,可维护性高,引入了boostrap框架,使得页面很精美;项目处于测试阶段,系统可能存在bug,不稳定
+# Vue 3 + Typescript + Vite
 
-[在线预览: http://admin.wzhshare.top](http://admin.wzhshare.top)  
-### 技术栈
-```
-Vue2 + vue-router + vuex + boostrap + jquery + ES6
-```
-## Build Setup
+This template should help get you started developing with Vue 3 and Typescript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-``` bash
-# 安装依赖
-npm install
+## Recommended IDE Setup
 
-# 开启服务用于本地开发 localhost:8085
-npm run dev
+- [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
 
-# 打包发布
-npm run build
+## Type Support For `.vue` Imports in TS
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# 单元测试
-npm run unit
-```
+Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's `.vue` type support plugin by running `Volar: Switch TS Plugin on/off` from VSCode command palette.
